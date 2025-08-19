@@ -1,0 +1,1 @@
+Ahora le hace PING a los que tienen el rol: @Inicios de Sesión en la pagina

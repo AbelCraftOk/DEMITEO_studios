@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demiteo Studios</title>
+  <link rel="icon" type="image/png" href="./logo.png">
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', Arial, sans-serif;
+        background: linear-gradient(135deg, #0d1b2a 0%, #274060 100%);
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        text-align: center;
+        flex-direction: column;
+    }
+    nav {
+        margin-bottom: 32px;
+    }
+    .container {
+        padding: 28px 32px;
+        animation: fadeIn 0.6s ease;
+        border: 2px solid #3a86ff;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.08);
+        box-shadow: 0 8px 32px rgba(58, 134, 255, 0.12);
+        backdrop-filter: blur(2px);
+    }
+    @keyframes fadeIn {
+        from {opacity: 0;}
+        to {opacity: 1;}
+    }
+    .menu-flotante {
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(13,27,42,0.7);
+        backdrop-filter: blur(8px);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        display: none;
+    }
+    .menu-flotante .contenido {
+        background: #1b263b;
+        padding: 28px 32px;
+        border-radius: 16px;
+        color: white;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    }
+    .btn, button {
+        padding: 12px 22px;
+        margin: 7px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 500;
+        transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+        box-shadow: 0 2px 8px rgba(58, 134, 255, 0.08);
+    }
+    .btn:hover, button:hover {
+        transform: scale(1.07);
+        box-shadow: 0 4px 16px rgba(58, 134, 255, 0.18);
+    }
+    button {
+        background: linear-gradient(90deg, #3a86ff 60%, #80ed99 100%);
+        color: white;
+    }
+    .btn-exit {
+        background: linear-gradient(90deg, #ef233c 60%, #ff6b6b 100%);
+        color: white;
+    }
+    .button {
+        background: linear-gradient(90deg, #80ed99 60%, #3a86ff 100%);
+        color: black;
+    }
+    .logo {
+        width: 180px;
+        height: 180px;
+        background: linear-gradient(135deg, #0d1b2a 60%, #3a86ff 100%);
+        border-radius: 32px;
+        border: 6px solid #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        color: white;
+        box-shadow: 0 6px 24px rgba(58, 134, 255, 0.18);
+        margin: 0 auto;
+        transition: transform 0.2s;
+    }
+    .logo:hover {
+        transform: scale(1.05) rotate(-2deg);
+        box-shadow: 0 12px 32px rgba(58, 134, 255, 0.25);
+    }
+    input, select {
+        padding: 10px;
+        border-radius: 8px;
+        border: 1.5px solid #3a86ff;
+        margin: 7px 0;
+        width: 100%;
+        font-size: 15px;
+        background: rgba(255,255,255,0.07);
+        color: #fff;
+        transition: border 0.3s, background 0.2s;
+    }
+    input:focus, select:focus {
+        border: 2px solid #80ed99;
+        outline: none;
+        background: rgba(58,134,255,0.08);
+    }
+    ::placeholder {
+        color: #bfc9d1;
+        opacity: 1;
+    }
+    .recuadro {
+        background: linear-gradient(135deg, #1b263b 60%, #274060 100%);
+        border: 2px solid #80ed99;
+        border-radius: 14px;
+        padding: 22px 32px;
+        margin: 20px auto;
+        color: #fff;
+        box-shadow: 0 4px 16px rgba(58, 134, 255, 0.18);
+        max-width: 440px;
+        font-size: 17px;
+    }
+#tabla-sanciones-activas {
+    border-collapse: separate;
+    border-spacing: 0;
+    box-shadow: 0 4px 24px rgba(58,134,255,0.18);
+    font-size: 17px;
+    margin-top: 18px;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #1b263b;
+}
+#tabla-sanciones-activas th, #tabla-sanciones-activas td {
+    padding: 14px 18px;
+    text-align: left;
+    border-bottom: 1.5px solid #274060;
+}
+#tabla-sanciones-activas th {
+    background: #274060;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border-top: none;
+}
+#tabla-sanciones-activas tr:last-child td {
+    border-bottom: none;
+}
+#tabla-sanciones-activas tbody tr:hover {
+    background: #3a86ff;
+    color: #fff;
+    transition: background 0.2s;
+}
+</style>
+</head>
+<body>
+    <nav>
+        <img src="./logo.png" alt="Logo" class="logo">
+    </nav>
+    <div class="container" id="login">
+        <h1>Login</h1>
+        <input type="text" id="login-user" placeholder="Usuario">
+        <input type="password" id="login-password" placeholder="Contraseña">
+        <button type="button" onclick="login()">Loguear</button>
+    </div>
+    <div class="container" id="panel" style="display: none;">
+        <h1>Panel de Administracion</h1>
+        <div class="recuadro">
+            <button type="button" id="locked-btn-sanciones-activas" class="btn btn-exit" onclick="unlock('btn-sanciones-activas')">Sanciones</button>
+            <button type="button" id="btn-sanciones-activas" style="display:none;" onclick="mostrarPestaña('sanciones-activas'); mostrarSancionesActivas()">Sanciones</button>
+            <button type="button" id="locked-btn-cuenta" class="btn btn-exit" onclick="unlock('btn-cuenta')">Agregar Cuenta</button>
+            <button type="button" id="btn-cuenta" style="display:none;" onclick="document.getElementById('menu-addCuenta').style.display = 'flex';">Agregar Cuenta</button>
+            <button type="button" id="locked-btn-game" class="btn btn-exit" onclick="unlock('btn-game')">Informacion sobre el juego de Reblox</button>
+            <button type="button" id="btn-game" style="display:none;" onclick="mostrarPestaña('info-game')">Informacion sobre el juego de Reblox</button>
+            <button type="button" id="locked-btn-solis" class="btn btn-exit" onclick="unlock('btn-solis')">Ver las Solicitudes Pendientes</button>
+            <button type="button" id="btn-solis" style="display:none;" onclick="mostrarPestañas('solicitudes')">Ver las Solicitudes Pendientes</button>
+            <button type="button" id="locked-btn-sancion" class="btn btn-exit" onclick="unlock('btn-sancion')">Agregar una Sancion</button>
+            <button type="button" id="btn-sancion" style="display:none;" onclick="document.getElementById('menu-addSancion').style.display = 'flex';">Agregar una Sancion</button>
+        </div>
+    </div>
+    <div class="container" id="info-game" style="display: none;">
+        <h2>Informacion sobre el juego de Reblox</h2>
+        <p>Creador: </p>
+    </div>
+    <div class="container" id="sanciones-activas" style="display: none;">
+        <h2>Sanciones Activas</h2>
+        <table id="tabla-sanciones-activas" style="width:100%;background:#1b263b;color:white;border-radius:12px;">
+            <thead>
+                <tr>
+                    <th>Usuario Sancionado</th>
+                    <th>Razón</th>
+                    <th>Hasta el</th>
+                    <th>Administrado por</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <button type="button" onclick="mostrarSancionesActivas()">🔄</button>
+        <button type="button" class="btn btn-exit" onclick="mostrarPestaña('panel')">Cerrar</button>
+    </div>
+    <div class="menu-flotante" id="menu-addCuenta">
+        <div class="contenido">
+            <h2>Agregar Cuenta</h2>
+            <input type="text" placeholder="Nombre de Usuario">
+            <input type="password" placeholder="Contraseña">
+            <button type="button" onclick="addCuenta()">Agregar</button>
+            <button type="button" class="btn btn-exit" onclick="document.getElementById('menu-addCuenta').style.display = 'none';">Cerrar</button>
+        </div>
+    </div>
+    <div class="menu-flotante" id="menu-addSancion">
+        <div class="contenido">
+            <h2>Agregar una Sancion</h2>
+            <input type="text" placeholder="@Usuario-Sancionado">
+            <input type="text" placeholder="Tiempo">
+            <input type="text" placeholder="Razon">
+            <input type="text" placeholder="Administrador que Sanciona">
+            <button type="button" onclick="addSancion()">Agregar Sancion</button>
+            <button type="button" class="btn btn-exit" onclick="document.getElementById('menu-addSancion').style.display = 'none';">Cerrar</button>
+        </div>
+    </div>
+    <script type="module" src="./script2.js"></script>
+    <script src="./script.js"></script>
+    <script src="./unlocks.js"></script>
+</body>
+</html>

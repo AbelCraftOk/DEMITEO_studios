@@ -62,7 +62,8 @@ function enviarEmbled(Data) {
         title: "Nuevo Inicio de Sesión en la Web",
         description: `Se detectó un usuario iniciando sesión en la web.\n` +
                      `Usuario: ${Data.chofer}\n` +
-                     `Horario de inicio de sesión: ${Data.timestamp.toLocaleString()}`,
+                     `Horario de inicio de sesión: ${Data.timestamp.toLocaleString()}\n` +
+                     `<@&1407423501966639254>`,
         color: 3066993,
     };
     const payload = { embeds: [embed] };
