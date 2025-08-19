@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Demiteo Studios</title>
-  <link rel="icon" type="image/png" href="./logo.png">
+  <title>Apoyar a Pedro Gabriel Ojeda</title>
 <style>
     body {
         margin: 0;
@@ -201,70 +200,11 @@ footer .social-icons a {
 </style>
 </head>
 <body>
-    <nav>
-        <img src="./logo.png" alt="Logo" class="logo">
-    </nav>
     <div class="container" id="login">
-        <h1>Login</h1>
-        <input type="text" id="login-user" placeholder="Usuario">
-        <input type="password" id="login-password" placeholder="Contraseña">
-        <button type="button" onclick="login()">Loguear</button>
-    </div>
-    <div class="container" id="panel" style="display: none;">
-        <h1>Panel de Administracion</h1>
-        <div class="recuadro">
-            <button type="button" id="locked-btn-sanciones-activas" class="btn btn-exit" onclick="unlock('btn-sanciones-activas')">Sanciones</button>
-            <button type="button" id="btn-sanciones-activas" style="display:none;" onclick="mostrarPestaña('sanciones-activas'); mostrarSancionesActivas()">Sanciones</button>
-            <button type="button" id="locked-btn-cuenta" class="btn btn-exit" onclick="unlock('btn-cuenta')">Agregar Cuenta</button>
-            <button type="button" id="btn-cuenta" style="display:none;" onclick="document.getElementById('menu-addCuenta').style.display = 'flex';">Agregar Cuenta</button>
-            <button type="button" id="locked-btn-game" class="btn btn-exit" onclick="unlock('btn-game')">Informacion sobre el juego de Reblox</button>
-            <button type="button" id="btn-game" style="display:none;" onclick="mostrarPestaña('info-game')">Informacion sobre el juego de Reblox</button>
-            <button type="button" id="locked-btn-solis" class="btn btn-exit" onclick="unlock('btn-solis')">Ver las Solicitudes Pendientes</button>
-            <button type="button" id="btn-solis" style="display:none;" onclick="mostrarPestañas('solicitudes')">Ver las Solicitudes Pendientes</button>
-            <button type="button" id="locked-btn-sancion" class="btn btn-exit" onclick="unlock('btn-sancion')">Agregar una Sancion</button>
-            <button type="button" id="btn-sancion" style="display:none;" onclick="document.getElementById('menu-addSancion').style.display = 'flex';">Agregar una Sancion</button>
-        </div>
-    </div>
-    <div class="container" id="info-game" style="display: none;">
-        <h2>Informacion sobre el juego de Reblox</h2>
-        <p>Creador: </p>
-    </div>
-    <div class="container" id="sanciones-activas" style="display: none;">
-        <h2>Sanciones Activas</h2>
-        <table id="tabla-sanciones-activas" style="width:100%;background:#1b263b;color:white;border-radius:12px;">
-            <thead>
-                <tr>
-                    <th>Usuario Sancionado</th>
-                    <th>Razón</th>
-                    <th>Hasta el</th>
-                    <th>Administrado por</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-        <button type="button" onclick="mostrarSancionesActivas()">🔄</button>
-        <button type="button" class="btn btn-exit" onclick="mostrarPestaña('panel')">Cerrar</button>
-    </div>
-    <div class="menu-flotante" id="menu-addCuenta">
-        <div class="contenido">
-            <h2>Agregar Cuenta</h2>
-            <input type="text" placeholder="Nombre de Usuario">
-            <input type="password" placeholder="Contraseña">
-            <button type="button" onclick="addCuenta()">Agregar</button>
-            <button type="button" class="btn btn-exit" onclick="document.getElementById('menu-addCuenta').style.display = 'none';">Cerrar</button>
-        </div>
-    </div>
-    <div class="menu-flotante" id="menu-addSancion">
-        <div class="contenido">
-            <h2>Agregar una Sancion</h2>
-            <input type="text" placeholder="@Usuario-Sancionado">
-            <input type="text" placeholder="Tiempo">
-            <input type="text" placeholder="Razon">
-            <input type="text" placeholder="Administrador que Sanciona">
-            <button type="button" onclick="addSancion()">Agregar Sancion</button>
-            <button type="button" class="btn btn-exit" onclick="document.getElementById('menu-addSancion').style.display = 'none';">Cerrar</button>
-        </div>
+        <p>Hola Usuarios de esta web, soy Pedro el creador de esta web. Lo unico que les pido un apoyo para que pueda seguir haciendo proyectos como este.</p>
+        <button type="button" class="btn button" onclick="mostrarMenu('menu-apoyos')">Apoyar</button>
+        <button type="button" class="btn button" onclick="mostrarMenu('menu-contacto')">Contactar</button>
+        <button type="button" class="btn btn-exit" onclick="document.getElementById('footer-apoyo').style.display = 'none';">Cerrar este menu</button>
     </div>
     <div class="menu-flotante" id="menu-contacto">
         <div class="contenido">
@@ -388,15 +328,13 @@ footer .social-icons a {
             <button type="button" class="btn btn-exit" onclick="document.getElementById('menu-apoyo-12').style.display = 'none';">Cerrar</button>
         </div>
     </div>
-    <footer id="footer-apoyo">
-        <p>Hola Usuarios de esta web, soy Pedro el creador de esta web. Si no les molesta mucho, podrian apoyarme para que pueda seguir haaciendo proyectos abiertos a todo plucibo completamente gratis.</p>
-        <p>A Luciano, quien me pidio que haga la web, no le cobre ni 1 centavo. Lo unico que les pido un apoyo para que pueda seguir haciendo proyectos como este.</p>
-        <button type="button" class="btn button" onclick="mostrarMenu('menu-apoyos')">Apoyar</button>
-        <button type="button" class="btn button" onclick="mostrarMenu('menu-contacto')">Contactar</button>
-        <button type="button" class="btn btn-exit" onclick="document.getElementById('footer-apoyo').style.display = 'none';">Cerrar este menu</button>
-    </footer>
-    <script type="module" src="./script2.js"></script>
-    <script src="./script.js"></script>
-    <script src="./unlocks.js"></script>
+    <script>
+        function mostrarMenu(id) {
+            document.querySelectorAll('.menu-flotante').forEach(div => {
+                div.style.display = 'none';
+            });    
+            document.getElementById(id).style.display = 'block';
+        }
+    </script>
 </body>
 </html>
