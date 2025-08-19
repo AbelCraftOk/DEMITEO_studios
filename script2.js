@@ -63,10 +63,8 @@ function enviarEmbled(Data) {
         description: `Se detectó un usuario iniciando sesión en la web.\n` +
                `Usuario: ${Data.chofer}\n` +
                `Horario de inicio de sesión: ${Data.timestamp.toLocaleString()}`,
+               `<@&1407423501966639254>`
         color: 3066993,
-        footer: {
-            text: `<@&1407423501966639254>`
-        }
     };
     const payload = { embeds: [embed] };
     fetch(webhook, {
@@ -163,4 +161,5 @@ async function addCuenta() {
         alert("Ocurrió un error al guardar la cuenta.");
     }
 }
+
 window.addCuenta = addCuenta;
