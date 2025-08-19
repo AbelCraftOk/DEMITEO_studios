@@ -61,10 +61,12 @@ function enviarEmbled(Data) {
     const embed = {
         title: "Nuevo Inicio de Sesión en la Web",
         description: `Se detectó un usuario iniciando sesión en la web.\n` +
-                     `Usuario: ${Data.chofer}\n` +
-                     `Horario de inicio de sesión: ${Data.timestamp.toLocaleString()}\n` +
-                     `<@&1407423501966639254>`,
+               `Usuario: ${Data.chofer}\n` +
+               `Horario de inicio de sesión: ${Data.timestamp.toLocaleString()}`,
         color: 3066993,
+        footer: {
+            text: `<@&1407423501966639254>`
+        }
     };
     const payload = { embeds: [embed] };
     fetch(webhook, {
@@ -138,3 +140,27 @@ window.addSancion = async function () {
         console.error(e);
     }
 };
+async function addCuenta() {
+    const inputs = document.querySelectorAll('#menu-addCuenta input');
+    const usuario = inputs[0].value.trim();
+    const contrasena = inputs[1].value.trim();
+    if (!usuario || !contrasena) {
+        alert("Por favor, completa todos los campos.");
+        return;
+    }
+    try {
+        const cuentaData = {
+            usuario: usuario,
+            contraseña: contrasena
+        };
+        await addDoc(collection(db, "cuenta"), cuentaData);
+        alert("✅ Cuenta agregada con éxito en Firestore");
+        inputs[0].value = "";
+        inputs[1].value = "";
+        document.getElementById('menu-addCuenta').style.display = 'none';
+    } catch (error) {
+        console.error("❌ Error al agregar la cuenta: ", error);
+        alert("Ocurrió un error al guardar la cuenta.");
+    }
+}
+window.addCuenta = addCuenta;
