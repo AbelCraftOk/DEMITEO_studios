@@ -128,6 +128,36 @@
         max-width: 440px;
         font-size: 17px;
     }
+#tabla-sanciones-activas {
+    border-collapse: separate;
+    border-spacing: 0;
+    box-shadow: 0 4px 24px rgba(58,134,255,0.18);
+    font-size: 17px;
+    margin-top: 18px;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #1b263b;
+}
+#tabla-sanciones-activas th, #tabla-sanciones-activas td {
+    padding: 14px 18px;
+    text-align: left;
+    border-bottom: 1.5px solid #274060;
+}
+#tabla-sanciones-activas th {
+    background: #274060;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border-top: none;
+}
+#tabla-sanciones-activas tr:last-child td {
+    border-bottom: none;
+}
+#tabla-sanciones-activas tbody tr:hover {
+    background: #3a86ff;
+    color: #fff;
+    transition: background 0.2s;
+}
 </style>
 </head>
 <body>
@@ -143,8 +173,8 @@
     <div class="container" id="panel" style="display: none;">
         <h1>Panel de Administracion</h1>
         <div class="recuadro">
-            <button type="button" id="locked-btn-sanciones" class="btn btn-exit" onclick="unlock('btn-sanciones')">Sanciones</button>
-            <button type="button" id="btn-sanciones" style="display:none;" onclick="mostrarPestaña('sanciones')">Sanciones</button>
+            <button type="button" id="locked-btn-sanciones-activas" class="btn btn-exit" onclick="unlock('btn-sanciones-activas')">Sanciones</button>
+            <button type="button" id="btn-sanciones-activas" style="display:none;" onclick="mostrarPestaña('sanciones-activas'); mostrarSancionesActivas()">Sanciones</button>
             <button type="button" id="locked-btn-cuenta" class="btn btn-exit" onclick="unlock('btn-cuenta')">Agregar Cuenta</button>
             <button type="button" id="btn-cuenta" style="display:none;" onclick="document.getElementById('menu-addCuenta').style.display = 'flex';">Agregar Cuenta</button>
             <button type="button" id="locked-btn-game" class="btn btn-exit" onclick="unlock('btn-game')">Informacion sobre el juego de Reblox</button>
@@ -155,18 +185,26 @@
             <button type="button" id="btn-sancion" style="display:none;" onclick="document.getElementById('menu-addSancion').style.display = 'flex';">Agregar una Sancion</button>
         </div>
     </div>
-    <div class="container" id="sanciones" style="display: none;">
-        <h2>Sanciones</h2>
-        <p>Aqui puedes ver las sanciones impuestas a los jugadores.</p>
-        <div id="sanciones-list"></div>
-    </div>
     <div class="container" id="info-game" style="display: none;">
         <h2>Informacion sobre el juego de Reblox</h2>
         <p>Creador: </p>
     </div>
-    <div class="container" id="solicitudes" style="display: none;">
-        <h2>Solicitudes Pendientes</h2>
-        <div id="solicitudes-list"></div>
+    <div class="container" id="sanciones-activas" style="display: none;">
+        <h2>Sanciones Activas</h2>
+        <table id="tabla-sanciones-activas" style="width:100%;background:#1b263b;color:white;border-radius:12px;">
+            <thead>
+                <tr>
+                    <th>Usuario Sancionado</th>
+                    <th>Razón</th>
+                    <th>Hasta el</th>
+                    <th>Administrado por</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <button type="button" onclick="mostrarSancionesActivas()">🔄</button>
+        <button type="button" class="btn btn-exit" onclick="mostrarPestaña('panel')">Cerrar</button>
     </div>
     <div class="menu-flotante" id="menu-addCuenta">
         <div class="contenido">

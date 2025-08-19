@@ -83,3 +83,57 @@ function enviarEmbled(Data) {
     });
 }
 window.enviarEmbled = enviarEmbled;
+window.mostrarSancionesActivas = async function () {
+    const hoy = new Date();
+    const sancionesRef = collection(db, "sanciones");
+    const snapshot = await getDocs(sancionesRef);
+    const tbody = document.querySelector("#tabla-sanciones-activas tbody");
+    tbody.innerHTML = "";
+    snapshot.forEach(docu => {
+        const data = docu.data();
+        const hastaEl = new Date(data["hasta el"]);
+        if (isNaN(hastaEl.getTime()) || hoy > hastaEl) return;
+
+        const fila = document.createElement("tr");
+        fila.innerHTML = `
+            <td>${data.usuario || ""}</td>
+            <td>${data.razon || ""}</td>
+            <td>${data["hasta el"] || ""}</td>
+            <td>${data.admin || ""}</td>
+        `;
+        tbody.appendChild(fila);
+    });
+
+    mostrarPestaña('sanciones-activas');
+};
+window.addSancion = async function () {
+    const inputs = document.querySelectorAll('#menu-addSancion input');
+    const usuario = inputs[0].value.trim();
+    const tiempo = parseInt(inputs[1].value.trim(), 10); // días
+    const razon = inputs[2].value.trim();
+    const admin = inputs[3].value.trim();
+    if (!usuario || isNaN(tiempo) || !razon || !admin) {
+        alert("Completa todos los campos correctamente.");
+        return;
+    }
+    const hoy = new Date();
+    hoy.setHours(0,0,0,0);
+    const hastaEl = new Date(hoy);
+    hastaEl.setDate(hoy.getDate() + tiempo);
+    const hastaElStr = hastaEl.toISOString().split('T')[0];
+    const sancion = {
+        usuario: usuario,
+        razon: razon,
+        admin: admin,
+        "hasta el": hastaElStr
+    };
+    try {
+        await addDoc(collection(db, "sanciones"), sancion);
+        alert("Sanción agregada correctamente.");
+        document.getElementById('menu-addSancion').style.display = 'none';
+        inputs.forEach(input => input.value = "");
+    } catch (e) {
+        alert("Error al agregar la sanción.");
+        console.error(e);
+    }
+};
