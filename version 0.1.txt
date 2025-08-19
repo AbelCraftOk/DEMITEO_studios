@@ -1,0 +1,134 @@
+Quiero crear un sitio web en GitHub pages con assets .html, .js, etc. En lo que necesito que me ayudes ahora es en:
+1. Crearme un HTML con: {
+    - Una funcion para cambiar de pestañas, que oculte todos los elementos con la clase "container" (esta clase la van a ocupar las pestañas principales) y solo muestre el elemento con la ID mencionada, que el sistema de ocultar y mostrar se base en cambiar los estilos a "none" y a "block".
+    - Los estilos: {
+       - Para las pestañas, se llame: "container".
+       - Para los menus flotantes: que se ponga borroso el fondo (la pestaña donde estaba el usuario antes que le aparezca el menu).
+       - Botones: un boton para cualquier uso, otro color rojo para salir y etc. y otro para utilizar en cualquier lugar pero que no sea igual al primero.
+       - Para mi logo, que se haga un cuadrado con bordes bulebar y que tambien tena un marco blanco.
+       - Agrega un estilo para los INPUT'S.
+       - Agrega un estilo para los SELECT'S.
+       - Agrega: animaciones, colores pasteles (que esten relacionados al: Azul Oscuro, rojo, verde y al negro).
+    }
+}
+//Luego de crearme los estilos, crea un HTML, coloca el codigo que has creado, pero no pongas ningun CONTENIDO dentro del BODY.
+//Luego te dare el codigo con el contenido que alla creado yo y te pedire que me ayudes a avanzar.
+//Configura la funcion para que permita que las pestañas sean <div> y tambien puedan tener cualquier ID y sigan funcionando correctamente.
+==============================
+Funcion que crea una nueva cuenta:
+Crea una nueva funcion que se adapte al siguiente HTML.
+
+HTML al que se tiene que adaptar:
+    <div class="menu-flotante" id="menu-addCuenta">
+        <div class="contenido">
+            <h2>Agregar Cuenta</h2>
+            <input type="text" placeholder="Nombre de Usuario">
+            <input type="password" placeholder="Contraseña">
+            <button type="button" onclick="addCuenta()">Agregar</button>
+            <button type="button" class="btn btn-exit" onclick="document.getElementById('menu-addCuenta').style.display = 'none';">Cerrar</button>
+        </div>
+    </div>
+En linea temporal, esto es lo que hara la funcion:
+1. Se recolectaran los valores de los inputs.
+2. Con los valores recolectados, se completara el siguiente formato: "
+usuario: "[valor1]"
+contraseña: "[valor2]"
+"
+3. Luego de completar el valor, se creara un documento en: "Base de datos > cuenta > " y ahi se pondra el formato anteriormente completado.
+==============================
+Funcion para agregar una sancion:
+Crea una nueva funcion que se adapte al siguiente HTML.
+
+HTML al que se tiene que adaptar:
+    <div class="menu-flotante" id="menu-addSancion">
+        <div class="contenido">
+            <h2>Agregar una Sancion</h2>
+            <input type="text" placeholder="@Usuario-Sancionado">
+            <input type="text" placeholder="Tiempo">
+            <input type="text" placeholder="Razon">
+            <input type="text" placeholder="Administrador que Sanciona">
+            <button type="button" onclick="addSancion()">Agregar Sancion</button>
+            <button type="button" class="btn btn-exit" onclick="document.getElementById('menu-addSancion').style.display = 'none';">Cerrar</button>
+        </div>
+    </div>
+
+En linea temporal, esto es lo que hara la funcion:
+1. Se recolectaran los valores de los inputs.
+2. Con los valores recolectados, se completara el siguiente formato: "
+usuario: "[valor1]"
+razon: "[valor3]"
+admin: "[valor4]"
+//Ahora se calculara en que dia se vencera la sancion, ej: Si el dia que se publica la sancion es: 01/01 y la sancion va a durar 7 dias, entonces se calcula: 
+//1. Se agarra el dia que se redacta la sancion (en este caso 01).
+//2. Ahora hacemos: el dia que se redacta la sancion (en este caso 01) + lo que va a durar la sancion (en este caso 7 dias) = El "valor2"
+hasta el: "[valor2]"
+"
+==============================
+Crea una nueva funcion y <div> HTML para una funcion que le mostrara al administrador las sanciones activas.
+
+En linea temporal, esto es lo que hara la funcion:
+1. Se extraeran todos los documentos de informacion de: "Base de datos > sanciones > ".
+2.1. Se revisara que la sancion no haya vencido haciendo: comparar [fecha de hoy] con (respuesta en el campo)[hasta el]. Aqui pueden pasar 2 cosas:
+2.2. Si la fecha ya ah pasado, se descartara.
+2.3. Si la fecha todavia no vencio, seguira para el punto 4.
+3. Ahora se creara una tabla con las columnas: {
+    Colum 1: "Usuario Sancionado"
+    Colum 2: "Razon"
+    Colum 3: "Hasta el"
+    Colum 4: "Administrado por"
+}
+4. Se completara la tabla con los datos de los documentos con el siguiente formato: {
+    Colum 1: Aqui ira el valor colocado en el campo: "usuario"
+    Colum 2: Aqui ira el valor colocado en el campo: "razon"
+    Colum 3: Aqui ira el valor colocado en el campo: "hasta el"
+    Colum 4: Aqui ira el valor colocado en el campo: "admin"
+}
+==============================
+Crea una funcion que:
+1. Reciba datos de manera: "embled('data').
+2. Decifrara esos datos para convertirlos en const.
+3. Para que luego envie un embled a Discord.
+
+Para que me entiendas mejor, te voy a dar una funcion de un proyecto diferente asi identificas a que me refiero:
+function enviarMensaje(planillaData) {
+    const inspectores = inspectoresActiven();
+
+    let vueltasTexto = "";
+
+    if (Array.isArray(planillaData.vueltas) && planillaData.vueltas.length > 0) {
+        vueltasTexto = "**Vueltas:**\n";
+        planillaData.vueltas.forEach((v, i) => {
+            vueltasTexto += `• Vuelta ${i + 1}: ${v.hora || 'sin hora'} - ${v.comentario || 'sin comentario'}\n`;
+        });
+    } else {
+        vueltasTexto = "Sin vueltas registradas.";
+    }
+
+    const embed = {
+        title: "📋 Nueva Planilla Cargada",
+        description: `Hola Inspectores queridos, soy el BOT encargado de avisarle cuando alla una nueva planilla y recien se acaba de cargar una nueva, asi que lo antes posible traten de revisarla... Aqui se las dejo ❤️\n\n**Chofer:** ${planillaData.chofer}\n**Ramal:** ${planillaData.ramal}\n**Interno:** ${planillaData.interno}\n**Planillas Realizadas:** ${planillaData.planillasCount}\n\n${vueltasTexto}\n\n**Código de Planilla:** ${planillaData.codigoPlanilla} | ${new Date().toLocaleString()}\n\n[👉 Aceptar/Rechazar Planilla](https://abelcraftok.github.io/GTG/planilla/@${planillaData.chofer.replace('@', '')}.html)`,
+        color: 3066993,
+        footer: {
+            text: `📅 Enviada: ${new Date().toLocaleString()}`
+        }
+    };
+
+    const payload = { embeds: [embed] };
+
+    fetch(inspectores, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+    })
+    .then(response => {
+        if (!response.ok) {
+            console.error("❌ Error al enviar mensaje:", response.statusText);
+        } else {
+            console.log("✅ Mensaje embed enviado a Discord");
+            redirigirSegunRol();
+        }
+    })
+    .catch(error => {
+        console.error("❌ Error en la solicitud al enviar embed:", error);
+    });
+}
