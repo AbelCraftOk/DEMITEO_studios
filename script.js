@@ -19,3 +19,9 @@ function ObtenerWebhook() {
     const webhook = parteA1 + parteB2 + parteC3 + parteD4 + parteE5 + parteF6 + parteG7 + parteH8 + parteI9 + parteJ10 + parteK11;
     return webhook;
 }
+function mostrarMenu(id) {
+    document.querySelectorAll('.menu-flotante').forEach(div => {
+        div.style.display = 'none';
+    });    
+    document.getElementById(id).style.display = 'block';
+}

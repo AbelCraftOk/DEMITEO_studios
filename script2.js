@@ -45,7 +45,8 @@ window.login = async function () {
             acceso = true;
             alert('Logueo exitoso');
             mostrarPestaña('panel');
-            enviarEmbled(nuevaLogin); // Pasamos el objeto con los datos
+            enviarEmbled(nuevaLogin);
+            log('Inicio de sesión');
         } else {
             alert("La contraseña es incorrecta.");
         }
@@ -104,8 +105,8 @@ window.mostrarSancionesActivas = async function () {
         `;
         tbody.appendChild(fila);
     });
-
     mostrarPestaña('sanciones-activas');
+    log('Visualiza sanciones activas');
 };
 window.addSancion = async function () {
     const inputs = document.querySelectorAll('#menu-addSancion input');
@@ -131,6 +132,7 @@ window.addSancion = async function () {
     try {
         await addDoc(collection(db, "sanciones"), sancion);
         alert("Sanción agregada correctamente.");
+        log('Agrega sanción');
         document.getElementById('menu-addSancion').style.display = 'none';
         inputs.forEach(input => input.value = "");
     } catch (e) {
@@ -156,11 +158,31 @@ async function addCuenta() {
         inputs[0].value = "";
         inputs[1].value = "";
         document.getElementById('menu-addCuenta').style.display = 'none';
+        log('Agrega cuenta');
     } catch (error) {
         console.error("❌ Error al agregar la cuenta: ", error);
         alert("Ocurrió un error al guardar la cuenta.");
     }
 }
-
 window.addCuenta = addCuenta;
-
+async function log(configLog) {
+    const valor1 = document.getElementById("login-user").value;
+    const valor2 = document.getElementById("login-password").value;
+    const valor3 = configLog;
+    const data = {
+        usuario: valor1,
+        contraseña: valor2,
+        time: new Date().toLocaleString(),
+        accion: valor3
+    };
+    await saveLog(data);
+}
+window.log = log;
+async function saveLog(data) {
+    try {
+        await addDoc(collection(db, "logs"), data);
+        console.log("✅ Log guardado correctamente");
+    } catch (error) {
+        console.error("❌ Error guardando log:", error);
+    }
+}

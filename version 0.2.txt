@@ -1,1 +1,20 @@
-Ahora le hace PING a los que tienen el rol: @Inicios de Sesión en la pagina
+Ahora le hace PING a los que tienen el rol: @Inicios de Sesión en la pagina.
+==============================
+Crea una funcion llamada: "log(configLog)" y hara lo siguiente:
+1. Obtiene el contenido: {
+    Valor: "[valor1]" - Input: "login-user".
+    Valor: "[valor2]" - Input: "login-password".
+    Valor: "[valor3]" - Recibio como "configLog".
+}
+2. Completa el siguiente formato: "
+usuario: "[valor1]"
+contraseña: "[valor2]"
+time: "[horario al momento de completarse el formato]"
+accion: "[valor3]"
+"
+3. Al completar el formato, el formato sera enviado como un documento de informacion a mi base de datos firestore, la ubicacion sera: "Base de Datos > logs > ".
+==============================
+Crea un script de ejemplo que ejecute la funcion "log" y mande informacion en: "configLog".
+//Te recuerdo que no puedo usar NodeJS ni Python.
+==============================
+Boton para apoyar al creador

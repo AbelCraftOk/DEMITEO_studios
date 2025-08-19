@@ -158,6 +158,46 @@
     color: #fff;
     transition: background 0.2s;
 }
+footer {
+  background-color: #0077b6;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+  font-size: 14px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+footer p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #ccc;
+}
+
+footer .social-icons {
+  margin-top: 10px;
+}
+
+footer .social-icons a {
+  display: inline-block;
+  margin: 0 5px;
+  font-size: 18px;
+}
+.separator {
+  width: 100%;
+  height: 2px;
+  background-color: #0077b6;
+  margin: 30px 0;
+}
 </style>
 </head>
 <body>
@@ -226,6 +266,135 @@
             <button type="button" class="btn btn-exit" onclick="document.getElementById('menu-addSancion').style.display = 'none';">Cerrar</button>
         </div>
     </div>
+    <div class="menu-flotante" id="menu-contacto">
+        <div class="contenido">
+            <h2>Contactar</h2>
+            <button type="button" onclick="window.open('https://wa.me/+542215989210')">Enviar Mensaje</button>
+            <button type="button" onclick="window.open('mailto:pedrogabrielojeda664@gmail.com')">Enviar Correo</button>
+            <button type="button" class="btn btn-exit" onclick="document.getElementById('menu-contacto').style.display = 'none';">Cerrar</button>
+        </div>
+    </div>
+    <div class="menu-flotante" id="menu-apoyos">
+        <div class="contenido">
+            <h2>Apoyos</h2>
+            <p>Si quieres apoyar este proyecto, puedes hacerlo a traves de:</p>
+            <button type="button" onclick="mostrarMenu('menu-apoyo-1')">$250</button>
+            <button type="button" onclick="mostrarMenu('menu-apoyo-2')">$500</button>
+            <button type="button" onclick="mostrarMenu('menu-apoyo-3')">$750</button>
+            <button type="button" onclick="mostrarMenu('menu-apoyo-4')">$1000</button>
+            <button type="button" onclick="mostrarMenu('menu-apoyo-5')">$1250</button>
+            <button type="button" onclick="mostrarMenu('menu-apoyo-6')">$1500</button>
+            <button type="button" onclick="mostrarMenu('menu-apoyo-7')">$1750</button>
+            <button type="button" onclick="mostrarMenu('menu-apoyo-8')">$2000</button>
+            <button type="button" onclick="mostrarMenu('menu-apoyo-9')">$4000</button>
+            <button type="button" onclick="mostrarMenu('menu-apoyo-10')">$6000</button>
+            <button type="button" onclick="mostrarMenu('menu-apoyo-11')">$8000</button>
+            <button type="button" onclick="mostrarMenu('menu-apoyo-12')">$10000</button>
+        </div>
+    </div>
+    <div class="menu-flotante" id="menu-apoyo-1">
+        <div class="contenido">
+            <h2>Apoyo de $250</h2>
+            <img src="./apoyos/apoyo1.png" alt="Apoyo de $250" style="width: 100%; max-width: 300px; border-radius: 12px; margin-bottom: 16px;">
+            <div class="separator"></div>
+            <button type="button" class="btn btn-exit" onclick="document.getElementById('menu-apoyo-1').style.display = 'none';">Cerrar</button>
+        </div>
+    </div>
+    <div class="menu-flotante" id="menu-apoyo-2">
+        <div class="contenido">
+            <h2>Apoyo de $500</h2>
+            <img src="./apoyos/apoyo2.png" alt="Apoyo de $500" style="width: 100%; max-width: 300px; border-radius: 12px; margin-bottom: 16px;">
+            <div class="separator"></div>
+            <button type="button" class="btn btn-exit" onclick="document.getElementById('menu-apoyo-2').style.display = 'none';">Cerrar</button>
+        </div>
+    </div>
+    <div class="menu-flotante" id="menu-apoyo-3">
+        <div class="contenido">
+            <h2>Apoyo de $750</h2>
+            <img src="./apoyos/apoyo3.png" alt="Apoyo de $750" style="width: 100%; max-width: 300px; border-radius: 12px; margin-bottom: 16px;">
+            <div class="separator"></div>
+            <button type="button" class="btn btn-exit" onclick="document.getElementById('menu-apoyo-3').style.display = 'none';">Cerrar</button>
+        </div>
+    </div>
+    <div class="menu-flotante" id="menu-apoyo-4">
+        <div class="contenido">
+            <h2>Apoyo de $1000</h2>
+            <img src="./apoyos/apoyo4.png" alt="Apoyo de $1000" style="width: 100%; max-width: 300px; border-radius: 12px; margin-bottom: 16px;">
+            <div class="separator"></div>
+            <button type="button" class="btn btn-exit" onclick="document.getElementById('menu-apoyo-4').style.display = 'none';">Cerrar</button>
+        </div>
+    </div>
+    <div class="menu-flotante" id="menu-apoyo-5">
+        <div class="contenido">
+            <h2>Apoyo de $1250</h2>
+            <img src="./apoyos/apoyo5.png" alt="Apoyo de $1250" style="width: 100%; max-width: 300px; border-radius: 12px; margin-bottom: 16px;">
+            <div class="separator"></div>
+            <button type="button" class="btn btn-exit" onclick="document.getElementById('menu-apoyo-5').style.display = 'none';">Cerrar</button>
+        </div>
+    </div>
+    <div class="menu-flotante" id="menu-apoyo-6">
+        <div class="contenido">
+            <h2>Apoyo de $1500</h2>
+            <img src="./apoyos/apoyo6.png" alt="Apoyo de $1500" style="width: 100%; max-width: 300px; border-radius: 12px; margin-bottom: 16px;">
+            <div class="separator"></div>
+            <button type="button" class="btn btn-exit" onclick="document.getElementById('menu-apoyo-6').style.display = 'none';">Cerrar</button>
+        </div>
+    </div>
+    <div class="menu-flotante" id="menu-apoyo-7">
+        <div class="contenido">
+            <h2>Apoyo de $1750</h2>
+            <img src="./apoyos/apoyo7.png" alt="Apoyo de $1750" style="width: 100%; max-width: 300px; border-radius: 12px; margin-bottom: 16px;">
+            <div class="separator"></div>
+            <button type="button" class="btn btn-exit" onclick="document.getElementById('menu-apoyo-7').style.display = 'none';">Cerrar</button>
+        </div>
+    </div>
+    <div class="menu-flotante" id="menu-apoyo-8">
+        <div class="contenido">
+            <h2>Apoyo de $2000</h2>
+            <img src="./apoyos/apoyo8.png" alt="Apoyo de $2000" style="width: 100%; max-width: 300px; border-radius: 12px; margin-bottom: 16px;">
+            <div class="separator"></div>
+            <button type="button" class="btn btn-exit" onclick="document.getElementById('menu-apoyo-8').style.display = 'none';">Cerrar</button>
+        </div>
+    </div>
+    <div class="menu-flotante" id="menu-apoyo-9">
+        <div class="contenido">
+            <h2>Apoyo de $4000</h2>
+            <img src="./apoyos/apoyo9.png" alt="Apoyo de $4000" style="width: 100%; max-width: 300px; border-radius: 12px; margin-bottom: 16px;">
+            <div class="separator"></div>
+            <button type="button" class="btn btn-exit" onclick="document.getElementById('menu-apoyo-9').style.display = 'none';">Cerrar</button>
+        </div>
+    </div>
+    <div class="menu-flotante" id="menu-apoyo-10">
+        <div class="contenido">
+            <h2>Apoyo de $6000</h2>
+            <img src="./apoyos/apoyo10.png" alt="Apoyo de $6000" style="width: 100%; max-width: 300px; border-radius: 12px; margin-bottom: 16px;">
+            <div class="separator"></div>
+            <button type="button" class="btn btn-exit" onclick="document.getElementById('menu-apoyo-10').style.display = 'none';">Cerrar</button>
+        </div>
+    </div>
+    <div class="menu-flotante" id="menu-apoyo-11">
+        <div class="contenido">
+            <h2>Apoyo de $8000</h2>
+            <img src="./apoyos/apoyo11.png" alt="Apoyo de $8000" style="width: 100%; max-width: 300px; border-radius: 12px; margin-bottom: 16px;">
+            <div class="separator"></div>
+            <button type="button" class="btn btn-exit" onclick="document.getElementById('menu-apoyo-11').style.display = 'none';">Cerrar</button>
+        </div>
+    </div>
+    <div class="menu-flotante" id="menu-apoyo-12">
+        <div class="contenido">
+            <h2>Apoyo de $10000</h2>
+            <img src="./apoyos/apoyo12.png" alt="Apoyo de $10000" style="width: 100%; max-width: 300px; border-radius: 12px; margin-bottom: 16px;">
+            <div class="separator"></div>
+            <button type="button" class="btn btn-exit" onclick="document.getElementById('menu-apoyo-12').style.display = 'none';">Cerrar</button>
+        </div>
+    </div>
+    <footer id="footer-apoyo">
+        <p>Hola Usuarios de esta web, soy Pedro el creador de esta web. Si no les molesta mucho, podrian apoyarme para que pueda seguir haaciendo proyectos abiertos a todo plucibo completamente gratis.</p>
+        <p>A Luciano, quien me pidio que haga la web, no le cobre ni 1 centavo. Lo unico que les pido un apoyo para que pueda seguir haciendo proyectos como este.</p>
+        <button type="button" class="btn button" onclick="mostrarMenu('menu-apoyos')">Apoyar</button>
+        <button type="button" class="btn button" onclick="mostrarMenu('menu-contacto')">Contactar</button>
+        <button type="button" class="btn btn-exit" onclick="document.getElementById('footer-apoyo').style.display = 'none';">Cerrar este menu</button>
+    </footer>
     <script type="module" src="./script2.js"></script>
     <script src="./script.js"></script>
     <script src="./unlocks.js"></script>
